@@ -2,7 +2,7 @@ import React from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 
 const Dropzone = ({ isDropDisabled, heroes, id, endGame }) => (
-  <div>
+  <div className="center-column">
     <div className="h3">{id}</div>
     {endGame && heroes.length === 0 && (
       <button className="btn btn-default" onClick={endGame}>
@@ -33,7 +33,7 @@ const Hero = ({ name, index }) => (
     {(provided) => {
       return (
         <div
-          className="menu-item tile tile-centered"
+          className="menu-item tile tile-centered center-column"
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
