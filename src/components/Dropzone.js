@@ -13,7 +13,7 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame }) => (
       {(provided) => {
         return (
           <div
-            className="menu hero-list"
+            className="menu hero-list background"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

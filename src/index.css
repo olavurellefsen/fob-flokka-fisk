@@ -13,6 +13,12 @@ div.menu .menu-item.tile.tile-centered {
   min-height: 500px;
 }
 
+.menu.background{
+  background: none;
+  box-shadow: none;
+}
+
+
 footer {
   position: fixed;
   bottom: 0;
@@ -20,26 +26,41 @@ footer {
 }
 
 .img-hero {
-  width: 150px;
-  height: 40px;
+  width: 330px;
+  height: 60px;
 }
 
 .img-drop-background-top {
-  background: url("/ocean_surface.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-}
-
-.img-drop-background-bottom {
-  background: url("/sea_bed.jpg");
+  background: url("/uppisjovar_trol_f8ca82bae0.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  height: 1100px;
+}
+
+.img-drop-background-bottom {
+  background: url("/botnsjovar_trol_7db099a64e.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 1100px;
+
+}
+
+.img-drop-background-mid {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 1100px;
+
 }

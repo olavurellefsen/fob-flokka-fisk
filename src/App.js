@@ -102,7 +102,9 @@ class App extends React.Component {
                         isDropDisabled={isDropDisabled}
                       />
                     </div>
-                    <Dropzone id="Óflokkað" heroes={Óflokkað} isDropDisabled={isDropDisabled} endGame={this.endGame} />
+                    <div className="img-drop-background-mid">
+                      <Dropzone id="Óflokkað" heroes={Óflokkað} isDropDisabled={isDropDisabled} endGame={this.endGame} />
+                    </div>
                     <div className="img-drop-background-bottom">
                       <Dropzone
                         id={COMICS.DC}
