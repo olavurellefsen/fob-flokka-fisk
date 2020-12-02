@@ -1,13 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+header.navbar {
+  height: 40px;
+  margin: 5px 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+div.menu .menu-item.tile.tile-centered {
+  margin-top: 5px;
+}
+
+.menu.hero-list {
+  z-index: inherit;
+  transform: none;
+  min-height: 500px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  font-size: 14px;
+}
+
+.img-hero {
+  width: 150px;
+  height: 40px;
+}
+
+.img-drop-background-top {
+  background: url("/ocean_surface.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-drop-background-bottom {
+  background: url("/sea_bed.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
