@@ -13,11 +13,10 @@ div.menu .menu-item.tile.tile-centered {
   min-height: 500px;
 }
 
-.menu.background{
+.menu.background {
   background: none;
   box-shadow: none;
 }
-
 
 footer {
   position: fixed;
@@ -44,7 +43,7 @@ footer {
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: 1100px;
 }
@@ -56,10 +55,9 @@ footer {
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: 1100px;
-
 }
 
 .img-drop-background-mid {
@@ -69,5 +67,4 @@ footer {
   justify-content: flex-start;
   flex-direction: column;
   height: 1100px;
-
 }
