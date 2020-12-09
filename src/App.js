@@ -7,8 +7,9 @@ import Header from './components/Header';
 import Dropzone from './components/Dropzone';
 import Footer from './components/Footer';
 import Highscore from './components/Highscore';
+import styled from 'styled-components';
 
-const GAME_DURATION = 1000 * 60 * 2; // 2 minutes
+const GAME_DURATION = 4000 * 60 * 2; // 2 minutes
 
 const initialState = {
   // we initialize the state by populating the bench with a shuffled collection of heroes
@@ -53,10 +54,15 @@ class App extends React.Component {
     if (this.timer) {
       clearInterval(this.timer);
     }
-
-    this.setState({
-      gameState: GAME_STATE.DONE,
-    });
+    if (this.state.gameState === GAME_STATE.PLAYING) {
+      this.setState({
+        gameState: GAME_STATE.REVIEW
+      });
+    } else {
+      this.setState({
+        gameState: GAME_STATE.DONE
+      });
+    }
   };
 
   resetGame = () => {
@@ -75,12 +81,12 @@ class App extends React.Component {
 
   render() {
     const { gameState, timeLeft, Óflokkað, ...groups } = this.state;
-    const isDropDisabled = gameState === GAME_STATE.DONE;
+    const isDropDisabled = gameState === GAME_STATE.DONE || gameState === GAME_STATE.REVIEW;
 
     return (
       <>
         <Header gameState={gameState} timeLeft={timeLeft} endGame={this.endGame} />
-        {this.state.gameState !== GAME_STATE.PLAYING && (
+        {(this.state.gameState !== GAME_STATE.PLAYING && this.state.gameState !== GAME_STATE.REVIEW) && (
           <Modal
             startGame={this.startGame}
             resetGame={this.resetGame}
@@ -90,30 +96,30 @@ class App extends React.Component {
           />
         )}
         {(this.state.gameState === GAME_STATE.PLAYING ||
+          this.state.gameState === GAME_STATE.REVIEW ||
           this.state.gameState === GAME_STATE.DONE) && (
             <>
               <DragDropContext onDragEnd={this.onDragEnd}>
-                <div >
-                  <div className="columns">
-                    <div className="img-drop-background-top">
-                      <Dropzone
-                        id={COMICS.MARVEL}
-                        heroes={this.state[COMICS.MARVEL]}
-                        isDropDisabled={isDropDisabled}
-                      />
-                    </div>
-                    <div className="img-drop-background-mid">
-                      <Dropzone id="Óflokkað" heroes={Óflokkað} isDropDisabled={isDropDisabled} endGame={this.endGame} />
-                    </div>
-                    <div className="img-drop-background-bottom">
-                      <Dropzone
-                        id={COMICS.DC}
-                        heroes={this.state[COMICS.DC]}
-                        isDropDisabled={isDropDisabled}
-                      />
-                    </div>
-                  </div>
-                </div>
+                <FlexContainer>
+                  <FlexColumn >
+                    <Dropzone
+                      id={COMICS.MARVEL}
+                      color="olive"
+                      heroes={this.state[COMICS.MARVEL]}
+                      isDropDisabled={isDropDisabled}
+                      gameState={gameState}
+
+                    />
+                    <Dropzone id="Óflokkað" heroes={Óflokkað} isDropDisabled={isDropDisabled} endGame={this.endGame} gameState={gameState} />
+                    <Dropzone
+                      id={COMICS.DC}
+                      color="steelblue"
+                      heroes={this.state[COMICS.DC]}
+                      isDropDisabled={isDropDisabled}
+                      gameState={gameState}
+                    />
+                  </FlexColumn>
+                </FlexContainer>
               </DragDropContext>
               <Highscore />
             </>
@@ -129,5 +135,21 @@ class App extends React.Component {
     }
   }
 }
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-self: stretch;
+`
+
+const FlexColumn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-self: stretch;
+`
 
 export default App;

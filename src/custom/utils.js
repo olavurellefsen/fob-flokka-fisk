@@ -24,9 +24,9 @@ export function shuffle(array) {
 // method to handle points calculation based on sort order as well as grouping
 function calculateScore(groupedHeroes, comics) {
   const correctOrder = HEROES.filter((hero) => hero.comics === comics).sort(
-    (a, b) =>   
+    (a, b) =>
       a.rank < b.rank ? -1 : 1
-    
+
   )
 
   return groupedHeroes.reduce((score, { name, rank }, index) => {
@@ -78,4 +78,5 @@ export const GAME_STATE = {
   READY: 'ready',
   PLAYING: 'playing',
   DONE: 'done',
+  REVIEW: 'review'
 }

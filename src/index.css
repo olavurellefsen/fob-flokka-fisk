@@ -13,21 +13,10 @@ div.menu .menu-item.tile.tile-centered {
   min-height: 500px;
 }
 
-.menu.background {
-  background: none;
-  box-shadow: none;
-}
-
 footer {
   position: fixed;
   bottom: 0;
   font-size: 14px;
-}
-
-.img-hero {
-  max-width: 330px;
-  width: 100%;
-  height: 60px;
 }
 
 .center-column {
@@ -36,35 +25,6 @@ footer {
   flex-direction: column;
 }
 
-.img-drop-background-top {
-  background: url("/uppisjovar_trol_f8ca82bae0.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  height: 1100px;
-}
-
-.img-drop-background-bottom {
-  background: url("/botnsjovar_trol_7db099a64e.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  height: 1100px;
-}
-
-.img-drop-background-mid {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  height: 1100px;
+.large-container {
+  width: 100%;
 }
