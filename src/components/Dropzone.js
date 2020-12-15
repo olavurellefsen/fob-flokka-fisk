@@ -52,7 +52,6 @@ const Hero = ({ name, color, rank, description, index, gameState,
             {...provided.dragHandleProps}
           >
             <figure
-              style={{ backgroundColor: 'transparent', width: "100%"}}
               // className="avatar tile-icon"
             >
               <img
@@ -60,7 +59,7 @@ const Hero = ({ name, color, rank, description, index, gameState,
                   .toLowerCase()
                   .replaceAll(' ', '-')}.png`}
                 alt={name}
-                style={{ height: "fit-content", maxWidth:"100%", width:"auto"}}
+                style={{ transform: "scale(0.5, 0.5)"}}
               />
             </figure>
             <div onClick={() => {
