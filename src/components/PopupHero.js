@@ -1,4 +1,6 @@
 
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
 const PopupHero = ({ name, rank, description, selectedHero, setSelectedHero }) => {
@@ -6,8 +8,8 @@ const PopupHero = ({ name, rank, description, selectedHero, setSelectedHero }) =
     <ContainerStyle show={selectedHero === name}>
       <FlexStyle>
         <RowStyle>
-          <h1>{`${rank}. ${name}`}</h1>
-          <ButtonStyle onClick={() => { setSelectedHero("") }}>X</ButtonStyle>
+          <HeeaderStyle>{`${name}`}</HeeaderStyle>
+          <ButtonStyle onClick={() => { setSelectedHero("") }}><FontAwesomeIcon icon={faTimes} /></ButtonStyle>
         </RowStyle>
         <p>{description}</p>
       </FlexStyle>
@@ -39,6 +41,10 @@ const FlexStyle = styled.div`
   color: black;
 `
 
+
+const HeeaderStyle = styled.h1`
+  font-size: 1.3em;
+`
 const RowStyle = styled.div`
   display: flex;
   flex-direction: row;
