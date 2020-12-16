@@ -22,11 +22,12 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => 
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {heroes.map(({ name, color, rank, description }, index) => (
+              {heroes.map(({ name, color, rank, description, comics }, index) => (
                 <Hero key={name} name={name} description={description} index={index}
                   color={color} gameState={gameState} rank={rank}
                   selectedHero={selectedHero}
                   setSelectedHero={setSelectedHero}
+                  comics={comics}
                 />
               ))}
               {provided.placeholder}
@@ -37,7 +38,7 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => 
     </HeroContainerStyle>
   )
 }
-const Hero = ({ name, color, rank, description, index, gameState,
+const Hero = ({ name, color, rank, description, comics ,index, gameState,
   selectedHero, setSelectedHero }) => {
   return (
     <Draggable key={index} draggableId={name} index={index}>
@@ -62,9 +63,11 @@ const Hero = ({ name, color, rank, description, index, gameState,
                 style={{ transform: "scale(0.5, 0.5)"}}
               />
             </figure>
-            <div onClick={() => {
+            <TextStyle onClick={() => {
               setSelectedHero(name)
-            }} title={description} className="tile-content">{gameState === "review" ? `${rank}. ${name}` : name}</div>
+            }} title={description} className="tile-content" color={gameState === "review" ? "white" : "black"} background_color={gameState === "review" ? comics === "Botnfiskur" ? "steelblue" : "olive" : ""}>
+              {gameState === "review" ? `${rank}. ${name}` : name}
+              </TextStyle>
             {gameState === "review" &&
               <PopupHero name={name} rank={rank} description={description}
                 selectedHero={selectedHero} setSelectedHero={setSelectedHero}
@@ -95,4 +98,10 @@ const HeroStyle = styled.div`
 
     `}
 `
+
+const TextStyle = styled.div`
+  background-color: ${props => props.background_color};
+  color: ${props => props.color};
+`
+
 export default Dropzone

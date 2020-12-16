@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import gql from 'graphql-tag'
-import { GAME_STATE, getTotalScore } from '../custom/utils'
+import { GAME_STATE, getScore, getTimeBonus, getTotalScore } from '../custom/utils'
 import { useMutation } from '@apollo/client'
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -18,6 +18,9 @@ const Modal = ({ gameState, groups, startGame, timeLeft, resetGame }) => {
   const [insertFobGame] = useMutation(INSERT_FOB_GAME)
   const { isAuthenticated, user, loginWithRedirect } = useAuth0()
 
+  const [totalScore, setTotalScore] = useState(0)
+  const [timeBonus, setTimeBonus] = useState(0)
+  const [score, setScore] = useState(0)
   useEffect(() => {
     const doInsertFobGame = async (groups, timeLeft) => {
       try {
@@ -36,6 +39,12 @@ const Modal = ({ gameState, groups, startGame, timeLeft, resetGame }) => {
     }
   }, [gameState, isAuthenticated, user])
 
+  useEffect(() => {
+    setTotalScore(getTotalScore(groups, timeLeft))
+    setTimeBonus(getTimeBonus(timeLeft))
+    setScore(getScore(groups))
+  }, [groups, timeLeft])
+
   return (
     <div className="modal modal-sm active">
       <div className="modal-overlay" />
@@ -48,7 +57,7 @@ const Modal = ({ gameState, groups, startGame, timeLeft, resetGame }) => {
             {' '}
             {gameState === GAME_STATE.READY
               ? `Hála og slepp ymsu fiskarnar í báðar bólkarnar.`
-              : `Tú fekk: ${getTotalScore(groups, timeLeft)} stig`}
+              : `Tú fekk: ${totalScore} stig, har ið tíðsbonusið taldi ${totalScore > 0 ? timeBonus : 0} stig. Tú fekst ${score} fyri at seta fiskarnar í tilhoyrandi kassar og í røttu raðfylgju.`}
           </div>
         </div>
         <div className="modal-footer">
