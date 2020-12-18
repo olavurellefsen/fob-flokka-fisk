@@ -8,6 +8,8 @@ import Dropzone from './components/Dropzone';
 import Footer from './components/Footer';
 import Highscore from './components/Highscore';
 import styled from 'styled-components';
+import { media } from '../src/utils/mediaTemplate'
+
 
 const GAME_DURATION = 4000 * 60 * 2; // 2 minutes
 
@@ -146,10 +148,13 @@ const FlexContainer = styled.div`
 
 const FlexColumn = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   align-self: stretch;
+  ${media.tablet`
+    flex-direction: column;
+  `}
 `
 
 export default App;

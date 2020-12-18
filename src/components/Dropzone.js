@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import styled from 'styled-components'
+import { media } from '../utils/mediaTemplate'
 import PopupHero from './PopupHero'
 
 const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => {
@@ -18,7 +19,7 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => 
         {(provided) => {
           return (
             <div
-              className="menu hero-list large-container"
+              className="menu hero-list"
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
@@ -38,7 +39,7 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => 
     </HeroContainerStyle>
   )
 }
-const Hero = ({ name, color, rank, description, comics ,index, gameState,
+const Hero = ({ name, color, rank, description, comics, index, gameState,
   selectedHero, setSelectedHero }) => {
   return (
     <Draggable key={index} draggableId={name} index={index}>
@@ -52,22 +53,18 @@ const Hero = ({ name, color, rank, description, comics ,index, gameState,
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <figure
-              // className="avatar tile-icon"
-            >
-              <img
-                src={`./hero_icons/${name
-                  .toLowerCase()
-                  .replaceAll(' ', '-')}.png`}
-                alt={name}
-                style={{ transform: "scale(0.5, 0.5)"}}
-              />
-            </figure>
+            <img
+              src={`./hero_icons/${name
+                .toLowerCase()
+                .replaceAll(' ', '-')}.png`}
+              alt={name}
+              style={{ transform: "scale(0.3, 0.3)" }}
+            />
             <TextStyle onClick={() => {
               setSelectedHero(name)
             }} title={description} className="tile-content" color={gameState === "review" ? "white" : "black"} background_color={gameState === "review" ? comics === "Botnfiskur" ? "steelblue" : "olive" : ""}>
               {gameState === "review" ? `${rank}. ${name}` : name}
-              </TextStyle>
+            </TextStyle>
             {gameState === "review" &&
               <PopupHero name={name} rank={rank} description={description}
                 selectedHero={selectedHero} setSelectedHero={setSelectedHero}
@@ -80,9 +77,10 @@ const Hero = ({ name, color, rank, description, comics ,index, gameState,
 }
 
 const HeroContainerStyle = styled.div`
-  max-width: 500px;
-  min-width: 290px;
+  width: 261px;
+  ${media.tablet`
   width: 100%;
+  `}
 `
 const HeroStyle = styled.div`
   display: flex;
