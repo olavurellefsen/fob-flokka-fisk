@@ -88,6 +88,7 @@ class App extends React.Component {
     return (
       <>
         <Header gameState={gameState} timeLeft={timeLeft} endGame={this.endGame} />
+        <TitleStyle>Hála fiskarnar til vinstru ella høgru</TitleStyle>
         {(this.state.gameState !== GAME_STATE.PLAYING && this.state.gameState !== GAME_STATE.REVIEW) && (
           <Modal
             startGame={this.startGame}
@@ -157,4 +158,8 @@ const FlexColumn = styled.div`
   `}
 `
 
+const TitleStyle = styled.h1`
+  text-align: center;
+  font-size: 1.2rem;
+`
 export default App;
