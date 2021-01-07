@@ -63,7 +63,7 @@ const Hero = ({ name, color, rank, description, comics, index, gameState,
             <TextStyle onClick={() => {
               setSelectedHero(name)
             }} title={description} className="tile-content" color={gameState === "review" ? "white" : "black"} background_color={gameState === "review" ? comics === "Botnfiskur" ? "steelblue" : "olive" : ""}>
-              {gameState === "review" ? `${rank}. ${name}` : name}
+              {name}
             </TextStyle>
             {gameState === "review" &&
               <PopupHero name={name} rank={rank} description={description}
