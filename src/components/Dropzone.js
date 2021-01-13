@@ -48,7 +48,7 @@ const Hero = ({ name, color, rank, description, comics, index, gameState,
           <HeroStyle
             review={gameState === "review"}
             color={color}
-            className="menu-item tile tile-centered center-column"
+            className="center-column"
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -83,11 +83,12 @@ const HeroContainerStyle = styled.div`
   `}
 `
 const HeroStyle = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 20px;
+  height: 135px;
    ${({ review, color }) =>
     review && color &&
     `
@@ -100,6 +101,8 @@ const HeroStyle = styled.div`
 const TextStyle = styled.div`
   background-color: ${props => props.background_color};
   color: ${props => props.color};
+  position: absolute;
+  top: 5%;
 `
 
 export default Dropzone
