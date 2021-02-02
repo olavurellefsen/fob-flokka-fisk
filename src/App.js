@@ -88,7 +88,7 @@ class App extends React.Component {
     return (
       <>
         <Header gameState={gameState} timeLeft={timeLeft} endGame={this.endGame} />
-        <TitleStyle>Hála fiskarnar til vinstru ella høgru</TitleStyle>
+        <TitleStyle>Drag fiskasløgini í rætta bólkin</TitleStyle>
         {(this.state.gameState !== GAME_STATE.PLAYING && this.state.gameState !== GAME_STATE.REVIEW) && (
           <Modal
             startGame={this.startGame}
