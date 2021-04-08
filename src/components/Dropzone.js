@@ -18,12 +18,13 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => 
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {heroes.map(({ name, color, rank, description, comics }, index) => (
+              {heroes.map(({ name, color, rank, description, comics, width }, index) => (
                 <Hero key={name} name={name} description={description} index={index}
                   color={color} gameState={gameState} rank={rank}
                   selectedHero={selectedHero}
                   setSelectedHero={setSelectedHero}
                   comics={comics}
+                  width={width}
                 />
               ))}
               {provided.placeholder}
@@ -35,7 +36,7 @@ const Dropzone = ({ isDropDisabled, heroes, id, endGame, gameState, color }) => 
   )
 }
 const Hero = ({ name, color, rank, description, comics, index, gameState,
-  selectedHero, setSelectedHero }) => {
+  selectedHero, setSelectedHero, width }) => {
   return (
     <Draggable key={index} draggableId={name} index={index}>
       {(provided) => {
@@ -47,13 +48,15 @@ const Hero = ({ name, color, rank, description, comics, index, gameState,
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            width={width}
           >
             <img
               src={`./hero_icons/${name
                 .toLowerCase()
                 .replaceAll(' ', '-')}.png`}
               alt={name}
-              style={{ transform: "scale(0.3, 0.3)" }}
+              style={{ width: width }
+            }
             />
             <TextStyle onClick={() => {
               setSelectedHero(name)
@@ -72,7 +75,8 @@ const Hero = ({ name, color, rank, description, comics, index, gameState,
 }
 
 const HeroContainerStyle = styled.div`
-  width: 261px;
+  /* width: 261px; */
+  width: 33%;
   ${media.tablet`
   width: 100%;
   `}
@@ -97,7 +101,7 @@ const TextStyle = styled.div`
   background-color: ${props => props.background_color};
   color: ${props => props.color};
   position: absolute;
-  top: 5%;
+  top: -3%;
 `
 
 export default Dropzone
