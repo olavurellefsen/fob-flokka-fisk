@@ -14,13 +14,13 @@ export const HEROES = [
     name: 'Brosma',
     comics: 'Botnfiskur',
     rank: 0,
-    width: "240px" // 120
+    width: "255px" // 120
   },
   {
     name: 'Hýsa',
     comics: 'Botnfiskur',
     rank: 0,
-    width: "224px" // 112
+    width: "210px" // 112
   },
   {
     name: 'Longa',
@@ -56,6 +56,6 @@ export const HEROES = [
     name: 'Upsi',
     comics: "Botnfiskur",
     rank: 0,
-    width: "260px" // 130
+    width: "270px" // 130
   },
 ];
