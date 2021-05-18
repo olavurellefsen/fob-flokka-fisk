@@ -1,6 +1,6 @@
 export const COMICS = {
   DC: 'Botnfiskur',
-  MARVEL: 'Uppisjóvarfiskur',
+  MARVEL: 'Uppsjóvarfiskur',
 };
 
 export const HEROES = [
@@ -36,19 +36,19 @@ export const HEROES = [
   },
   {
     name: 'Makrelur',
-    comics: 'Uppisjóvarfiskur',
+    comics: 'Uppsjóvarfiskur',
     rank: 0,
     width: "132px" //66
   },
   {
     name: 'Sild',
-    comics: 'Uppisjóvarfiskur',
+    comics: 'Uppsjóvarfiskur',
     rank: 0,
     width: "94px" // 47
   },
   {
     name: 'Svartkjaftur',
-    comics: 'Uppisjóvarfiskur',
+    comics: 'Uppsjóvarfiskur',
     rank: 0,
     width: "100px" // 50
   },
